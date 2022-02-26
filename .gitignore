@@ -1,0 +1,8 @@
+# folders to ignore #
+assets
+outputs
+
+# extensions to ignore #
+*.mat
+*.asv
+
