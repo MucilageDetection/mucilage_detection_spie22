@@ -1,6 +1,7 @@
 %% Bahri ABACI
 clear all, close all, clc;
 addpath(genpath('functions'));
+addpath(genpath('class'));
 
 % load the common configuration settings
 load('configuration.mat');

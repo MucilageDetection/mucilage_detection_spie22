@@ -16,7 +16,7 @@ load(configuration.RandomForestTrainedNetwork);
 
 % load one data
 CropZone = {1:1680; 1:4200};
-WaterMask = rgb2gray(imread(fullfile(configuration.LabelsFolder, 'T35TPE_WaterMask_20m.png')));
+WaterMask = rgb2gray(imread(fullfile(configuration.WaterMaskFolder, 'T35TPE_WaterMask_20m.png')));
 load('E:\Dropbox\Dataset\satellite\sentinel2\35TPE_MATDATA\S2A_MSIL2A_20210519T084601_N0300_R107_T35TPE_20210519T115101_20m.mat');
 ImageData = double(BandData(CropZone{1}, CropZone{2},:)) ./ 10000;
 

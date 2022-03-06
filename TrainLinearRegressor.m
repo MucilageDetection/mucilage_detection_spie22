@@ -6,14 +6,17 @@ addpath(genpath('functions'));
 load('configuration.mat');
 
 %% load the dataset
-load(configuration.SentinelPixelSampledData);
+load(configuration.SentinelTrainValidationTestSets, 'TrainImageSet');
+
+%% get the pixel samples for training
+[TrainingSamples, TrainingClasses] = GetPixelSamples(TrainImageSet);
 
 %% train the network
 if ~isfile(configuration.LinearRegressorTrainedNetwork)
     fprintf('Training Linear Regressor model\n');
     
     % train model
-    LinearRegressorNetwork = fitlm(TrainingSamples, TrainingClass);
+    LinearRegressorNetwork = fitrlinear(TrainingSamples, TrainingClasses, 'Learner', 'leastsquares', 'Lambda', 0.01);
     
     % save the model
     save(configuration.LinearRegressorTrainedNetwork, 'LinearRegressorNetwork');

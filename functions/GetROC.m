@@ -1,8 +1,8 @@
-function [TP, FP, FN, TN] = GetROC(label, predictions, bins)
+function [TP, FP, FN, TN, thresholds] = GetROC(label, predictions, bins)
     
     % make the thresholds uniformly distributed
-    thresholds = linspace(0, 1, bins - 2);
-    thresholds = [-1, thresholds, 2];
+    eps = 1e-8;
+    thresholds = linspace(0-eps, 1+eps, bins);
 
     % Calculating the sensibility and specificity of each threshold
     TP = zeros(size(thresholds,1),size(predictions,2));

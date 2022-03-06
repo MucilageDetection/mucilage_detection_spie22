@@ -6,15 +6,24 @@ configuration.SentinelDataFolder = 'E:\Dropbox\Dataset\satellite\sentinel2';
 
 %% create directories
 configuration.ModelOutputDirectory = 'outputs';
-configuration.LabelsFolder = 'data';
-configuration.PatchOutputFolder = fullfile(configuration.SentinelDataFolder, 'ImagePatches');
-configuration.SentinelCroppedDatasetInformation = fullfile(configuration.ModelOutputDirectory, 'SentinelCroppedDatasetInformation.mat');
-configuration.SentinelTrainValidationTestSets = fullfile(configuration.ModelOutputDirectory, 'SentinelTrainValidationTestSets.mat');
-configuration.SentinelPixelSampledData = fullfile(configuration.ModelOutputDirectory, 'SentinelPixelSampledData.mat');
+configuration.InputDirectory = 'data';
+configuration.AssetsDirectory = 'assets';
+configuration.LabelsFolder = fullfile(configuration.InputDirectory, 'labels');
+configuration.PatchOutputFolder = fullfile(configuration.InputDirectory, 'sentinel2');
+configuration.WaterMaskFolder = fullfile(configuration.InputDirectory, 'mask');
+configuration.SentinelCroppedDatasetInformation = fullfile(configuration.InputDirectory, 'SentinelCroppedDatasetInformation.mat');
+configuration.SentinelTrainValidationTestSets = fullfile(configuration.InputDirectory, 'SentinelTrainValidationTestSets.mat');
+configuration.AllEvaluatedResults =  fullfile(configuration.ModelOutputDirectory, 'TestSetEvaluations.mat');
 
 %% common size settings
 configuration.WorkingResolution = 20;
-configuration.BandNames = {'B02', 'B03', 'B04', 'B05', 'B06', 'B07', 'B8A', 'B11', 'B12'};
+if configuration.WorkingResolution == 10
+    configuration.BandNames = {'B02', 'B03', 'B04', 'B08'};
+elseif configuration.WorkingResolution == 20
+    configuration.BandNames = {'B02', 'B03', 'B04', 'B05', 'B06', 'B07', 'B8A', 'B11', 'B12'};
+elseif configuration.WorkingResolution == 60
+    configuration.BandNames = {'B01', 'B02', 'B03', 'B04', 'B05', 'B06', 'B07', 'B8A', 'B09', 'B11', 'B12'};
+end
 configuration.SampleSize = [256 256 200];
 configuration.InputSize = [configuration.SampleSize(1) configuration.SampleSize(2) length(configuration.BandNames)];
 

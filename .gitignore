@@ -1,6 +1,8 @@
 # folders to ignore #
 assets
 outputs
+temp
+data/sentinel2
 
 # extensions to ignore #
 *.mat
