@@ -5,6 +5,5 @@ temp
 data/sentinel2
 
 # extensions to ignore #
-*.mat
 *.asv
 
