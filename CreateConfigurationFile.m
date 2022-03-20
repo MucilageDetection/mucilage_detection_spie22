@@ -28,9 +28,6 @@ configuration.RandomForestTrainedNetwork = fullfile(configuration.ModelOutputDir
 %% unet settings
 configuration.UNetTrainedNetwork = fullfile(configuration.ModelOutputDirectory, 'UNetTrainedNetwork.mat');
 
-%% model thresholds
-configuration.ModelThresholdsMat = fullfile(configuration.ModelOutputDirectory, 'thresholds.mat');
-
 %% SENTINEL
 configuration.sentinel.DataFolder = 'data/sentinel2';
 configuration.sentinel.LabelsFolder = fullfile(configuration.sentinel.DataFolder, 'labels');
