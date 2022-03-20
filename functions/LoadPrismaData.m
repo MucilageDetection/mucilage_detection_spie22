@@ -15,5 +15,8 @@ function BandData = LoadPrismaData(PrismaZipDataFolder, PrismaZipFileName)
     BandData = double(BandData) ./ 65536;
 
     % delete the temp directory
-    rmdir('temp', 's');
+    status = rmdir('temp', 's');
+    if ~status
+        fprintf('temp folder cannot be removed, remove it manually!\n');
+    end
 end
