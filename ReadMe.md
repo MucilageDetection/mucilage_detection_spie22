@@ -1,9 +1,8 @@
 
 ## Setting up variables
-- Open `CreateConfigurationFile.m` and change the `SentinelDataFolder` to the local sentinel folder 
+- Open `CreateConfigurationFile.m` and change the `SentinelDatasetFolder` and `PrismaDatasetFolder` to the local folders 
 - Run  `CreateConfigurationFile.m` to create configuration.mat file which will be shared between multiple source files
-- Run `CreateCroppedDataset.m` to generate image patches from the labeled data
-- Run `CreateImageSets.m` to generate Train, Validation and Test set images for all algorithms
+- Run `CreateMultiSpectralDataset.m` to generate image patches from the labeled data
 
 ## Train Models
 
@@ -17,6 +16,9 @@
 - Run `TrainUNetModel.m` file to create UNet network and train it. 
 
 ## Test Model
+
+### Find the thresholds values on TrainSet
+- Run `FindModelThresholds.m` file to create model wise threshold values for fixed FPR.
 
 ### Test Model on Test Set
 - Run `EvaluateResults.m` file to create ROC curves on the test set.

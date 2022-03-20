@@ -6,7 +6,7 @@ addpath(genpath('functions'));
 load('configuration.mat');
 
 %% load the dataset
-load(configuration.SentinelTrainValidationTestSets, 'TrainImageSet');
+load(configuration.sentinel.TrainValidationTestSets, 'TrainImageSet');
 
 %% get the pixel samples for training
 [TrainingSamples, TrainingClasses] = GetPixelSamples(TrainImageSet);

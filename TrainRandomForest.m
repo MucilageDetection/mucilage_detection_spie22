@@ -6,7 +6,7 @@ addpath(genpath('functions'));
 load('configuration.mat');
 
 %% load the dataset
-load(configuration.SentinelTrainValidationTestSets, 'TrainImageSet');
+load(configuration.sentinel.TrainValidationTestSets, 'TrainImageSet');
 
 %% get the pixel samples for training
 [TrainingSamples, TrainingClasses] = GetPixelSamples(TrainImageSet);
@@ -16,7 +16,7 @@ if ~isfile(configuration.RandomForestTrainedNetwork)
     fprintf('Training Random Forest model\n');
     
     % train model
-    RandomForestNetwork = TreeBagger(10, TrainingSamples, TrainingClasses, 'Method', 'regression');
+    RandomForestNetwork = TreeBagger(10, TrainingSamples, TrainingClasses, 'Method', 'regression', 'MinLeafSize', 100);
     
     % save the model
     RandomForestNetwork = RandomForestNetwork.compact();

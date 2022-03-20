@@ -6,7 +6,10 @@ addpath(genpath('functions'));
 load('configuration.mat');
 
 %% load the dataset
-load(configuration.SentinelTrainValidationTestSets, 'TrainImageSet');
+load(configuration.sentinel.TrainValidationTestSets, 'TrainImageSet');
+
+% load(configuration.prisma.TrainValidationTestSets, 'TestImageSet');
+% TrainImageSet = TestImageSet;
 
 %% get the pixel samples for training
 [TrainingSamples, TrainingClasses] = GetPixelSamples(TrainImageSet);
@@ -20,7 +23,7 @@ mkdir('assets');
 
 % generate automated subplot
 close all;
-for b = 1:length(configuration.BandNames)
+for b = 1:length(configuration.sentinel.BandNames)
     figure,
     
     x = linspace(0,0.2, 30);
@@ -34,9 +37,9 @@ for b = 1:length(configuration.BandNames)
     grid on;
     grid minor;
     legend('Water','Mucilage');
-    title(configuration.BandNames{b});
+    title(configuration.sentinel.BandNames{b});
     drawnow;
-    saveas(gcf,sprintf('assets/histogram_%s.eps', configuration.BandNames{b}), 'epsc');
+    saveas(gcf, fullfile(configuration.AssetsDirectory, sprintf('histogram_%s.eps', configuration.sentinel.BandNames{b})),'epsc');
 end
 
 %% plot the band statistics
@@ -49,15 +52,15 @@ BandStd1 = std(MucilageSamples, 1);
 figure, hold on;
 grid on;
 ax = gca();
-errorbar(ax, 1:length(configuration.BandNames), BandMeans0, BandStd0, '-s','MarkerSize',10,...
+errorbar(ax, 1:length(configuration.sentinel.BandNames), BandMeans0, BandStd0, '-s','MarkerSize',10,...
     'MarkerEdgeColor','blue','MarkerFaceColor',[0.4 0.4 0.8], 'color', [0.2 0.2 1.0], 'LineWidth', 2);
-errorbar(ax, 1:length(configuration.BandNames), BandMeans1, BandStd1, '-s','MarkerSize',10,...
+errorbar(ax, 1:length(configuration.sentinel.BandNames), BandMeans1, BandStd1, '-s','MarkerSize',10,...
     'MarkerEdgeColor','red','MarkerFaceColor',[0.8 0.4 0.4], 'color', [1.0 0.2 0.2], 'LineWidth', 2);
-xticks(1:length(configuration.BandNames));
-ax.XTickLabel = configuration.BandNames;
+xticks(1:length(configuration.sentinel.BandNames));
+ax.XTickLabel = configuration.sentinel.BandNames;
 legend('Water','Mucilage');
 
-saveas(gcf,sprintf('assets/water_mucilage_distribution.eps'), 'epsc');
+saveas(gcf, fullfile(configuration.AssetsDirectory, 'water_mucilage_distribution.eps'),'epsc');
 
 %% plot the vescovi statistics
 figure,
@@ -74,4 +77,4 @@ grid minor;
 legend('Water','Mucilage');
 title('Vescovi Index Distribution');
 drawnow;
-saveas(gcf,sprintf('assets/histogram_vescovi.eps'), 'epsc');
+saveas(gcf, fullfile(configuration.AssetsDirectory, 'histogram_vescovi.eps'),'epsc');

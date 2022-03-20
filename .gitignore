@@ -2,7 +2,6 @@
 assets
 outputs
 temp
-data/sentinel2
 
 # extensions to ignore #
 *.asv

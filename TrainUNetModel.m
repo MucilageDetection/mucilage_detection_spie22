@@ -7,7 +7,7 @@ addpath(genpath('class'));
 load('configuration.mat');
 
 %% load the dataset
-load(configuration.SentinelTrainValidationTestSets, 'TrainImageSet', 'ValidationImageSet');
+load(configuration.sentinel.TrainValidationTestSets, 'TrainImageSet', 'ValidationImageSet');
 
 %% settings
 DataAugmentationTypes = {'original';'hflip';'vflip';'rot90';'rot180'};
@@ -39,7 +39,8 @@ options = trainingOptions('adam', ...
     'CheckpointPath', tempdir, ...
     'VerboseFrequency',50,...
     'Plots','training-progress',...
-    'ValidationPatience', 2);
+    'ValidationPatience', 10, ...
+    'OutputNetwork', 'best-validation-loss');
 
 %% train the network
 if ~isfile(configuration.UNetTrainedNetwork)
