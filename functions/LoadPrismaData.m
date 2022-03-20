@@ -11,7 +11,10 @@ function BandData = LoadPrismaData(PrismaZipDataFolder, PrismaZipFileName)
     SWIR = h5read(PrismaContent{1}, '/HDFEOS/SWATHS/PRS_L2D_HCO/Data Fields/SWIR_Cube');
     
     % create banddata
-    BandData = cat(3, permute(VNIR, [3 1 2]), permute(SWIR, [3 1 2]));
+    VNIROrdered = flip(permute(VNIR, [3 1 2]), 3);
+    SWIROrdered = flip(permute(SWIR, [3 1 2]), 3);
+
+    BandData = cat(3, VNIROrdered, SWIROrdered);
     BandData = double(BandData) ./ 65536;
 
     % delete the temp directory
