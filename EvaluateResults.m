@@ -28,11 +28,11 @@ for e = 1:length(EvalDataset)
     % try to load the previous results
     if exist(AllEvaluatedResultsOutputName, 'file')
         fprintf('Model already evaluated, loading the previously evaluated model!\n');
-        load(configuration.AllEvaluatedResults);
+        load(AllEvaluatedResultsOutputName);
     else
 
         % set the model names
-        ModelNames = {'U-Net', 'Random Forest', 'Linear Regressor', 'Vescovi Index'};
+        ModelNames = {'U-Net', 'Random Forest', 'Linear Regression', 'Vescovi Index'};
 
         %% get UNet model
         load(configuration.UNetTrainedNetwork);
@@ -120,7 +120,8 @@ for e = 1:length(EvalDataset)
 
     % now use thresholds to create sample outputs
     %% not the best way to create image mosaic
-    RandomPatches = randperm(size(TestImages, 4), 3);
+    aa = [139,576,564; 328,104,226];
+    RandomPatches = aa(e,:); %randperm(size(TestImages, 4), 3);
     AllImagesCell = cell(length(RandomPatches), length(ModelNames)+1);
     for n = 1:length(RandomPatches)
 
