@@ -120,8 +120,7 @@ for e = 1:length(EvalDataset)
 
     % now use thresholds to create sample outputs
     %% not the best way to create image mosaic
-    aa = [139,576,564; 328,104,226];
-    RandomPatches = aa(e,:); %randperm(size(TestImages, 4), 3);
+    RandomPatches = randperm(size(TestImages, 4), 3);
     AllImagesCell = cell(length(RandomPatches), length(ModelNames)+1);
     for n = 1:length(RandomPatches)
 
