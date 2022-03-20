@@ -16,7 +16,7 @@ if ~isfile(configuration.RandomForestTrainedNetwork)
     fprintf('Training Random Forest model\n');
     
     % train model
-    RandomForestNetwork = TreeBagger(10, TrainingSamples, TrainingClasses, 'Method', 'regression', 'MinLeafSize', 100);
+    RandomForestNetwork = TreeBagger(10, TrainingSamples, TrainingClasses, 'Method', 'regression', 'MaxNumSplits', 16, 'MinLeafSize', 500);
     
     % save the model
     RandomForestNetwork = RandomForestNetwork.compact();
