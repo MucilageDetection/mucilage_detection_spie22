@@ -2,8 +2,9 @@
 clear all, close all, clc;
 
 FolderName = '../visual_results';
-HeaderNames = {'tci', 'unet', 'random_forest'};
+HeaderNames = {'tci', 'unet', 'random_forest', 'linear_regression', 'vescovi'};
 ConvertTo = 'jpg';
+ScaleWith = 0.25;
 OutputDirectory = 'assets';
 
 % get the list of all images
@@ -33,7 +34,7 @@ for c = 1:length(HeaderNames)
         CurrentName = fullfile(OutputDirectory, sprintf('%s.%s', CurrentName, ConvertTo));
         
         % convert the file
-        imwrite(imread(fullfile(FolderName, CurrentNames{i})), CurrentName);
+        imwrite(imresize(imread(fullfile(FolderName, CurrentNames{i})), ScaleWith), CurrentName);
 
         ColumnFileNames{2*i - 1,c} = sprintf('%s-%s-%s', AllDates{i}(7:8), AllDates{i}(5:6), AllDates{i}(1:4));
         ColumnFileNames{2*i + 0,c} = sprintf('![%s](%s)', AllDates{i}, CurrentName);
