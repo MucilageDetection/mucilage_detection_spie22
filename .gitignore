@@ -3,6 +3,8 @@ assets
 outputs
 temp
 visual_results
+utils/*
+!utils/*.m
 
 # extensions to ignore #
 *.asv
