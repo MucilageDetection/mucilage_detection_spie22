@@ -2,7 +2,9 @@
 assets
 outputs
 temp
+visual_results
 
 # extensions to ignore #
 *.asv
+*.pdf
 
