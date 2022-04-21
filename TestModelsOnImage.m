@@ -5,6 +5,11 @@ addpath(genpath('functions'));
 % select the files
 [fileNames, filePath] = uigetfile("*.zip", "MultiSelect","on");
 
+% single file selected
+if ~iscell(fileNames)
+    fileNames = {fileNames};
+end
+
 % make the output directory
 if ~isempty(fileNames)
     mkdir('visual_results');
