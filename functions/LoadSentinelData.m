@@ -24,7 +24,14 @@ function BandData = LoadSentinelData(SentinelZipDataFolder, SentinelZipFileName,
     end
     
     % normalize reflectance
-    BandData = double(BandData) ./ 10000;
+    ProcessingBaseline = str2double(SentinelZipFileName(29:32));
+    if ProcessingBaseline >= 400
+        invalidIdx = BandData == 0;
+        BandData = double(BandData - 1000) ./ 10000;
+        BandData(invalidIdx) = 0;
+    else
+        BandData = double(BandData) ./ 10000;
+    end
     
     % delete the temp directory
     status = rmdir('temp', 's');
