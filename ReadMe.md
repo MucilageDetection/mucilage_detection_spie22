@@ -26,7 +26,26 @@ Model: Linear Regression, TPR at FPR: 0.821 / 0.050 Threshold: 0.4546
 Model: Vescovi Index, TPR at FPR: 0.338 / 0.050 Threshold: 0.6982
 ```
 
-### Test Model on Image
+## Citation
+If you use this code for your research, please consider citing:
+
+```
+@inproceedings{10.1117/12.2622287,
+    author = {Bahri Abaci and Murat Dede and Seniha Esen Yuksel and Mete Yilmaz},
+    title = {{Mucilage detection from hyperspectral and multispectral satellite data}},
+    volume = {12094},
+    booktitle = {Algorithms, Technologies, and Applications for Multispectral and Hyperspectral Imaging XXVIII},
+    editor = {Miguel Velez-Reyes and David W. Messinger},
+    organization = {International Society for Optics and Photonics},
+    publisher = {SPIE},
+    keywords = {Multispectral, Hyperspectral, Sentinel-2, PRISMA, Mucilage, Sea snot, Sea saliva, Deep learning},
+    year = {2022},
+    doi = {10.1117/12.2622287},
+    URL = {https://doi.org/10.1117/12.2622287}
+}
+```
+
+## Test Model on Image
 - Run `TestModelsOnImage.m` file to see the results of all models on selected source files.
 
 |True Color Image                                                                                       |U-Net                                                                                       |Random Forest                                                                                       |Linear Regression                                                                                       |Vescovi Index                                                                                       |
@@ -43,3 +62,5 @@ Model: Vescovi Index, TPR at FPR: 0.338 / 0.050 Threshold: 0.6982
 |![20210517](web_images/results/S2B_MSIL2A_20210517T085559_N0300_R007_T35TPE_20210517T112912_0_tci.jpg)|![20210517](web_images/results/S2B_MSIL2A_20210517T085559_N0300_R007_T35TPE_20210517T112912_1_unet.jpg)|![20210517](web_images/results/S2B_MSIL2A_20210517T085559_N0300_R007_T35TPE_20210517T112912_2_random_forest.jpg)|![20210517](web_images/results/S2B_MSIL2A_20210517T085559_N0300_R007_T35TPE_20210517T112912_3_linear_regression.jpg)|![20210517](web_images/results/S2B_MSIL2A_20210517T085559_N0300_R007_T35TPE_20210517T112912_4_vescovi.jpg)|
 |19-05-2021                                                                                |19-05-2021                                                                                 |19-05-2021                                                                                          |19-05-2021                                                                                              |19-05-2021                                                                                    |
 |![20210519](web_images/results/S2A_MSIL2A_20210519T084601_N0300_R107_T35TPE_20210519T115101_0_tci.jpg)|![20210519](web_images/results/S2A_MSIL2A_20210519T084601_N0300_R107_T35TPE_20210519T115101_1_unet.jpg)|![20210519](web_images/results/S2A_MSIL2A_20210519T084601_N0300_R107_T35TPE_20210519T115101_2_random_forest.jpg)|![20210519](web_images/results/S2A_MSIL2A_20210519T084601_N0300_R107_T35TPE_20210519T115101_3_linear_regression.jpg)|![20210519](web_images/results/S2A_MSIL2A_20210519T084601_N0300_R107_T35TPE_20210519T115101_4_vescovi.jpg)|
+
+
